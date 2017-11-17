@@ -1,11 +1,12 @@
 <html>
 <head>
 <title>皇室戰爭 - 時間通知器</title>
+<body>
+<br>
+Hello, 大家好我是哈波，歡迎大家使用皇室戰爭-時間通知器<br>
+<br>
+</body>
 <script>
-document.write("<br / ><br / >");
-document.write("Hello, 大家好我是哈波，歡迎大家使用皇室戰爭-時間通知器<br / >");
-document.write("<br / >");
-
 var currentdate = new Date();
 var datetime = "現在時間: " + currentdate.getFullYear() + "/"
                 + (currentdate.getMonth()+1)  + "/"
@@ -14,9 +15,36 @@ var datetime = "現在時間: " + currentdate.getFullYear() + "/"
                 + currentdate.getMinutes() + "分"
                 + currentdate.getSeconds() + "秒";
 
-document.write(datetime)
+document.write(datetime + "<br / ><br / >");
+</script>
 
+
+請輸入求卡剩餘時數<br>
+剩幾小時:<input type="text" id="hour" onchange="next7Hours()"/><br>
+剩幾分:<input type="text" id="minute" onchange="next7Hours()"/><br>
+<input type="button" name='submit' value="送出" onclick="document.write(next7Hours())"/><br><br>
+
+
+<script>
+
+function next7Hours() {
+    var hour_val = parseInt(document.getElementById("hour").value);//取得hour欄位的值
+    var minute_val = parseInt(document.getElementById("minute").value);//取得minut欄位的值
+    return (datetime + "<br>"
+                    + "下一次求卡時間: " + currentdate.getFullYear() + "/"
+                    + (currentdate.getMonth()+1)  + "/"
+                    + currentdate.getDate()+ " @ "
+                    + (currentdate.getHours() + 7 - 0) + "點"
+                    + (currentdate.getMinutes() - 0) + "分"
+                    + currentdate.getSeconds() + "秒<br>"
+                    + "輸入餘時: " + hour_val + "小時" + minute_val + "分鐘<br>"
+                    + "修正後下一次求卡時間: " + currentdate.getFullYear() + "/"
+                    + (currentdate.getMonth()+1)  + "/"
+                    + currentdate.getDate()+ " @ "
+                    + (currentdate.getHours() + 7 - hour_val) + "點"
+                    + (currentdate.getMinutes() - minute_val) + "分"
+                    + currentdate.getSeconds() + "秒<br>");
+}
 </script>
 </head>
-<body></body>
 </html>
